@@ -1,38 +1,13 @@
-# create-svelte
+# biome-svelte-issues
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## src/routes/enumTypeIssue/+page.svelte
 
-## Creating a project
+Here the is a conflict since Biome doesn't like it when I import without `type`
 
-If you're seeing this, you've probably already done this step. Congrats!
+## src/routes/letBindIssue/MyComponent.svelte
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+I think this is a known issue but just to have it here, `export let` should be ok and doesn't need a const.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## src/routes/letBindIssue/+page.svelte
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+If you create a variable that is sent into a component via a `bind` then it can't be const. But Biome complains if it's never modified in this file.
